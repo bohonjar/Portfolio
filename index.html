@@ -1,13 +1,346 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Portfolio</title>
-    <link rel="stylesheet" href="styles.css"> <!-- If you have CSS -->
+    
+    <link rel="stylesheet" type="text/css" href="/CSS/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    
+    <title>Portfolio Website</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            width: 100%;
+            min-height: 100vh;
+            background-color: black;
+            overflow: hidden;
+        }
+        .container {
+            width: 100%;
+            height: 100vh;
+            color: white;
+            overflow-y: scroll;
+            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
+        }
+        .menu {
+            position: fixed;
+            width: 100%;
+            height: 70px;
+            top: 0;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: black;
+            padding: 0 30px;
+        }
+        .logo {
+            color: #dedce1;
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+        .logo span {
+            padding-left: 10px;
+            color: yellow;
+        }
+        .menu ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        .menu ul li {
+            display: inline-table;
+            padding: 0 20px;
+        }
+        .menu ul li a {
+            position: relative;
+            text-decoration: none;
+            color: #dedce1;
+            font-size: 20px;
+        }
+        .menu ul li a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background-color: yellow;
+            top: 100%;
+            left: 0;
+            border-radius: 5px;
+            transition: transform 0.4s;
+            transform: scale(0);
+        }
+        .menu ul li a:hover::after,
+        .menu ul li a.active::after {
+            transform: scale(1);
+        }
+        #menuBtn {
+            cursor: pointer;
+            user-select: none;
+        }
+        #menuBtn .bar {
+            width: 26px;
+            height: 3px;
+            background-color: #dedce1;
+            margin: 5px auto;
+            border-radius: 5px;
+            transition: 0.4s cubic-bezier(1, 0.2, 0.2, 1);
+        }
+        main {
+            width: 100%;
+            height: calc(100vh - 70px);
+            background-image: url(/Images/leafm.jpg);
+            background-repeat: no-repeat;
+            background-position: right center;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .infoText {
+            padding: 0 8%;
+        }
+        .infoText p {
+            color: #79747b;
+            font-size: 22px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .infoText h1 {
+            color: #dedce1;
+            font-size: 50px;
+            padding: 8px 0;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 2px #333, -2px -2px 2px #333;
+        }
+        .infoText h1 span {
+            color: yellow;
+            padding-left: 10px;
+        }
+        .infoText button {
+            padding: 10px 12px;
+            border: 1px solid #79747b;
+            border-radius: 20px;
+            background-color: #000;
+            color: #79747b;
+            margin-top: 40px;
+            cursor: pointer;
+            transition: all 0.4s;
+        }
+        .infoText button:hover {
+            color: yellow;
+        }
+        .socialMediaIcons {
+            position: absolute;
+            bottom: 60px;
+            left: 8%;
+            color: yellow;
+        }
+        .socialMediaIcons a {
+            font-size: 24px;
+            padding-right: 20px;
+            transition: transform 0.4s;
+        }
+        .socialMediaIcons a:hover {
+            transform: scale(1.2);
+        }
+        @media(max-width: 768px) {
+            #menuBtn {
+                display: block;
+            }
+            .menu ul {
+                position: fixed;
+                width: 250px;
+                height: calc(100vh - 70px);
+                top: 70px;
+                right: -250px;
+                background-color: #232323;
+                border-radius: 30% 0 0 80%;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                border-top: 1px solid black;
+                transition: right 0.4s cubic-bezier(1, 0.2, 0.2, 1);
+            }
+            .menu ul.active {
+                right: 0;
+            }
+        }
+        section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            width: 100%;
+            height: 100vh;
+            color: white;
+            scroll-snap-align: center;
+        }
+        section h1 {
+            font-size: 4rem;
+        }
+        section p {
+            font-size: 1.5rem;
+        }
+        .gototopbtn {
+            position: fixed;
+            width: 50px;
+            height: 50px;
+            background: black;
+            bottom: 40px;
+            right: 50px;
+            text-decoration: none;
+            text-align: center;
+            line-height: 50px;
+            color: yellow;
+            font-size: 22px;
+        }
+        input[type="text"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid black;
+            border-radius: 10px;
+            box-sizing: border-box;
+            margin: 6px 0 16px;
+            resize: vertical;
+        }
+        input[type="submit"] {
+            background-color: rgb(0, 243, 0);
+            color: black;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: yellow;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Welcome to My Portfolio</h1>
-    <p>Here are some of my projects..</p>
+    <div class="container">
+        <nav class="menu">
+            <div class="logo">
+                <h2>My<span>Portfolio</span></h2>
+            </div>
+            <ul>
+                <li><a href="#Home" class="active" onclick="markMenuItem(this)">Home</a></li>
+                <li><a href="#About" onclick="markMenuItem(this)">About</a></li>
+                <li><a href="#Services" onclick="markMenuItem(this)">Services</a></li>
+                <li><a href="#Portfolio" onclick="markMenuItem(this)">Portfolio</a></li>
+                <li><a href="#Contact" onclick="markMenuItem(this)">Contact</a></li>
+            </ul>
+            <div id="menuBtn">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+
+        <main id="Home">
+            <section class="infoText">
+                <p>Hello, My Name is</p>
+                <h1>Jared<span>Cappa</span></h1>
+                <p>Aspiring Software Engineer & Developer</p>
+                <button><a style="color: yellow;" href="/Resume/Jared-Cappa.pdf" download="Resume">Download CV</a></button>
+                <div class="socialMediaIcons">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </section>
+        </main>
+
+        <section id="About" class="infoText">
+            <h1>About<span>Me</span></h1>
+            <div>
+                <p>I have always been fascinated with technology, and the capabilities that it possesses. Before I started coding, I began authoring short poems. I love and live to write poetry. The combination of happiness and creativity when writing translated tremendously into coding.</p>
+                <p>Now that I am in college and have started my degree towards Software Engineering and Development, I have realized just how passionate I am when it comes to programming or anything of similar creativity-based value. There is no surprise that I am passionate about coding, but I am even more passionate about learning.</p>
+                <p>Think that I can be part of the team? &nbsp; <a href="#Contact" style="color: yellow;">feel free to contact me</a></p>
+            </div>
+        </section>
+
+        <section id="Services" class="infoText">
+            <h1>Services<span>Offered</span></h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero vel, quisquam excepturi nesciunt rem sapiente!</p>
+        </section>
+
+        <section id="Portfolio" class="infoText">
+            <h1>Download<span>Portfolio</span></h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero vel, quisquam excepturi nesciunt rem sapiente!</p>
+            <button><a style="color: yellow;" href="/Resume/Jared-Cappa.pdf" download="Resume">Download CV</a></button>
+        </section>
+
+        <section id="Contact" class="infoText">
+            <h1>Contact<span>Me</span></h1>
+            <div class="parent">
+                <div class="child1">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero vel, quisquam excepturi nesciunt rem sapiente!</p>
+                </div>
+                <div class="child2">
+                    <form action="/action_page.php">
+                        <label for="fname">First Name</label>
+                        <input type="text" id="fname" name="firstname" placeholder="Your name..">
+                        
+                        <label for="lname">Last Name</label>
+                        <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                        
+                        <label for="country">Country</label>
+                        <select id="country" name="country">
+                            <option value="australia">Australia</option>
+                            <option value="canada">Canada</option>
+                            <option value="usa">USA</option>
+                        </select>
+                        
+                        <label for="subject">Subject</label>
+                        <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+                        
+                        <input type="submit" value="Submit">
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const menu_btn = document.querySelector('#menuBtn');
+        const menu = document.querySelector('.menu ul');
+        const menuItems = document.querySelectorAll('.menu ul li a');
+
+        menu_btn.addEventListener('click', function() {
+            menu_btn.classList.toggle('active');
+            menu.classList.toggle('active');
+        });
+
+        menuItems.forEach(item => {
+            item.addEventListener('click', function() {
+                menu_btn.classList.remove('active');
+                menu.classList.remove('active');
+            });
+        });
+
+        function markMenuItem(menuItem) {
+            menuItems.forEach(item => item.classList.remove('active'));
+            menuItem.classList.add('active');
+        }
+    </script>
+
+    <a class="gototopbtn" href="#About"><i class="fa-solid fa-chevron-up"></i></a>
 </body>
+
 </html>
