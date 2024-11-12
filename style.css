@@ -314,7 +314,7 @@ input[type="submit"]:hover {
 
 .contact-form textarea {
     resize: vertical;
-    height: 150px;
+    height: 100px;
 }
 
 .contact-form input[type="submit"] {
