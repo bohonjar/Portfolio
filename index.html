@@ -6,229 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="stylesheet" type="text/css" href="/CSS/styles.css">
+    <link rel="stylesheet" type="text/css" href="/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     
     <title>Portfolio Website</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            width: 100%;
-            min-height: 100vh;
-            background-color: black;
-            overflow: hidden;
-        }
-        .container {
-            width: 100%;
-            height: 100vh;
-            color: white;
-            overflow-y: scroll;
-            scroll-behavior: smooth;
-            scroll-snap-type: y mandatory;
-        }
-        .menu {
-            position: fixed;
-            width: 100%;
-            height: 70px;
-            top: 0;
-            z-index: 1;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: black;
-            padding: 0 30px;
-        }
-        .logo {
-            color: #dedce1;
-            font-size: 18px;
-            text-transform: uppercase;
-        }
-        .logo span {
-            padding-left: 10px;
-            color: yellow;
-        }
-        .menu ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            width: 100%;
-        }
-        .menu ul li {
-            display: inline-table;
-            padding: 0 20px;
-        }
-        .menu ul li a {
-            position: relative;
-            text-decoration: none;
-            color: #dedce1;
-            font-size: 20px;
-        }
-        .menu ul li a::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 1px;
-            background-color: yellow;
-            top: 100%;
-            left: 0;
-            border-radius: 5px;
-            transition: transform 0.4s;
-            transform: scale(0);
-        }
-        .menu ul li a:hover::after,
-        .menu ul li a.active::after {
-            transform: scale(1);
-        }
-        #menuBtn {
-            cursor: pointer;
-            user-select: none;
-        }
-        #menuBtn .bar {
-            width: 26px;
-            height: 3px;
-            background-color: #dedce1;
-            margin: 5px auto;
-            border-radius: 5px;
-            transition: 0.4s cubic-bezier(1, 0.2, 0.2, 1);
-        }
-        main {
-            width: 100%;
-            height: calc(100vh - 70px);
-            background-image: url(/Images/leafm.jpg);
-            background-repeat: no-repeat;
-            background-position: right center;
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-        }
-        .infoText {
-            padding: 0 8%;
-        }
-        .infoText p {
-            color: #79747b;
-            font-size: 22px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-        .infoText h1 {
-            color: #dedce1;
-            font-size: 50px;
-            padding: 8px 0;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            text-shadow: 2px 2px 2px #333, -2px -2px 2px #333;
-        }
-        .infoText h1 span {
-            color: yellow;
-            padding-left: 10px;
-        }
-        .infoText button {
-            padding: 10px 12px;
-            border: 1px solid #79747b;
-            border-radius: 20px;
-            background-color: #000;
-            color: #79747b;
-            margin-top: 40px;
-            cursor: pointer;
-            transition: all 0.4s;
-        }
-        .infoText button:hover {
-            color: yellow;
-        }
-        .socialMediaIcons {
-            position: absolute;
-            bottom: 60px;
-            left: 8%;
-            color: yellow;
-        }
-        .socialMediaIcons a {
-            font-size: 24px;
-            padding-right: 20px;
-            transition: transform 0.4s;
-        }
-        .socialMediaIcons a:hover {
-            transform: scale(1.2);
-        }
-        @media(max-width: 768px) {
-            #menuBtn {
-                display: block;
-            }
-            .menu ul {
-                position: fixed;
-                width: 250px;
-                height: calc(100vh - 70px);
-                top: 70px;
-                right: -250px;
-                background-color: #232323;
-                border-radius: 30% 0 0 80%;
-                display: flex;
-                align-items: center;
-                flex-direction: column;
-                border-top: 1px solid black;
-                transition: right 0.4s cubic-bezier(1, 0.2, 0.2, 1);
-            }
-            .menu ul.active {
-                right: 0;
-            }
-        }
-        section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            width: 100%;
-            height: 100vh;
-            color: white;
-            scroll-snap-align: center;
-        }
-        section h1 {
-            font-size: 4rem;
-        }
-        section p {
-            font-size: 1.5rem;
-        }
-        .gototopbtn {
-            position: fixed;
-            width: 50px;
-            height: 50px;
-            background: black;
-            bottom: 40px;
-            right: 50px;
-            text-decoration: none;
-            text-align: center;
-            line-height: 50px;
-            color: yellow;
-            font-size: 22px;
-        }
-        input[type="text"],
-        select,
-        textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid black;
-            border-radius: 10px;
-            box-sizing: border-box;
-            margin: 6px 0 16px;
-            resize: vertical;
-        }
-        input[type="submit"] {
-            background-color: rgb(0, 243, 0);
-            color: black;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-        }
-        input[type="submit"]:hover {
-            background-color: yellow;
-        }
-    </style>
 </head>
 
 <body>
@@ -240,7 +21,7 @@
             <ul>
                 <li><a href="#Home" class="active" onclick="markMenuItem(this)">Home</a></li>
                 <li><a href="#About" onclick="markMenuItem(this)">About</a></li>
-                <li><a href="#Services" onclick="markMenuItem(this)">Services</a></li>
+                <li><a href="#Services" onclick="markMenuItem(this)">Projects</a></li>
                 <li><a href="#Portfolio" onclick="markMenuItem(this)">Portfolio</a></li>
                 <li><a href="#Contact" onclick="markMenuItem(this)">Contact</a></li>
             </ul>
@@ -256,34 +37,72 @@
                 <p>Hello, My Name is</p>
                 <h1>Jared<span>Cappa</span></h1>
                 <p>Aspiring Software Engineer & Developer</p>
-                <button><a style="color: yellow;" href="/Resume/Jared-Cappa.pdf" download="Resume">Download CV</a></button>
+                <button><a style="color: yellow;" href="/Resume.pdf" download="Resume">Download CV</a></button>
                 <div class="socialMediaIcons">
-                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com/bohonjar"><i class="fa-brands fa-github"></i></a> <!-- GitHub icon added -->
+                    <a href="https://profile.indeed.com/p/jaredc-jlf44qr" title="Indeed"><i class="fa fa-briefcase"></i></a>
+                    <a href="https://www.linkedin.com/in/jared-cappa-3454b1338/"><i class="fa-brands fa-linkedin"></i></a>
                 </div>
+                
             </section>
         </main>
 
         <section id="About" class="infoText">
             <h1>About<span>Me</span></h1>
-            <div>
-                <p>I have always been fascinated with technology, and the capabilities that it possesses. Before I started coding, I began authoring short poems. I love and live to write poetry. The combination of happiness and creativity when writing translated tremendously into coding.</p>
-                <p>Now that I am in college and have started my degree towards Software Engineering and Development, I have realized just how passionate I am when it comes to programming or anything of similar creativity-based value. There is no surprise that I am passionate about coding, but I am even more passionate about learning.</p>
-                <p>Think that I can be part of the team? &nbsp; <a href="#Contact" style="color: yellow;">feel free to contact me</a></p>
+            <div style="text-align: center;">
+                <p>I’ve always been fascinated by technology and the endless possibilities it offers. Before diving into coding, I was passionate about writing short poems, where I discovered the joy of creativity and expression. That same sense of fulfillment and imagination I felt when writing poetry seamlessly translated into my work in programming.</p>
+                <p>Having recently graduated with a degree in Software Engineering and Development, I’ve realized just how deeply passionate I am about coding and the creative challenges it presents. My journey has only deepened my love for learning, and I’m excited to continue exploring the vast world of technology.</p>
+                <p>I’m eager to bring my skills and enthusiasm to a team that values innovation and creativity. If you think I’d be a good fit, feel free to reach out. I'd love to connect! &nbsp;</p>
+                <a href="#Contact" style="color: yellow; font-size: 1.5rem;">feel free to contact me</a>
             </div>
         </section>
 
         <section id="Services" class="infoText">
-            <h1>Services<span>Offered</span></h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero vel, quisquam excepturi nesciunt rem sapiente!</p>
+            <h1>Recent <span>Projects</span></h1>
+            
+            <div class="projects-container">
+                <div class="project-box">
+                    <h2 style="text-align: center;">Weather App</h2>
+                    <p>A simple web application that allows users to check the current weather for a specified city and state using the OpenWeatherMap API. Built with HTML, CSS, and JavaScript, this app provides a user-friendly interface to fetch and display real-time weather data, including temperature and weather conditions.</p>
+                    <a href="//bohonjar.github.io/WeatherApplication/">View the project live</a>
+                </div>
+        
+                <div class="project-box">
+                    <h2 style="text-align: center;">Chat Room</h2>
+                    <p>This is a simple web-based chat room application built with HTML, CSS, and JavaScript, utilizing Firebase's Realtime Database. It enables users to send and receive messages in real-time within a collaborative environment.</p>
+                    <a href="//bohonjar.github.io/ChatRoom/">View the project live</a>
+                </div>
+        
+                <div class="project-box">
+                    <h2 style="text-align: center;">Inventory Management System</h2>
+                    <p>This is a Windows-based Inventory Management System developed using C#, Windows Forms (WinForms), and SQL Server. The system is designed to help businesses efficiently manage their products, companies, and inventory levels.</p>
+                    <a href="https://github.com/bohonjar/InventoryManagementSystem.git">View the project live</a>
+                </div>
+
+                <div class="project-box">
+                    <h2 style="text-align: center;">Calculator</h2>
+                    <p>A simple web-based calculator built with HTML, CSS, and JavaScript. This application allows users to perform basic arithmetic operations, including addition, subtraction, multiplication, and division, in a user-friendly interface.</p>
+                    <a href="//bohonjar.github.io/Calculator/">View the project live</a>
+                </div>
+
+                <div class="project-box">
+                    <h2 style="text-align: center;">To-Do-List</h2>
+                    <p>A simple and intuitive To-Do List application built using Visual Studio Code. This project helps users manage their tasks efficiently, allowing them to add, edit, delete, and mark tasks as complete. The application features a clean user interface and utilizes local storage for task persistence.</p>
+                    <a href="//bohonjar.github.io/To-Do-List/">View the project live</a>
+                </div>
+
+                <div class="project-box">
+                    <h2 style="text-align: center;">Tip Calculator</h2>
+                    <p>A simple, interactive web-based tip calculator built with HTML, CSS, and JavaScript. This application allows users to input their bill amount and desired tip percentage, calculating both the tip amount and the total cost in real-time.</p>
+                    <a href="//bohonjar.github.io/TipCalculator/">View the project live</a>
+                </div>
+            </div>
         </section>
 
         <section id="Portfolio" class="infoText">
             <h1>Download<span>Portfolio</span></h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero vel, quisquam excepturi nesciunt rem sapiente!</p>
-            <button><a style="color: yellow;" href="/Resume/Jared-Cappa.pdf" download="Resume">Download CV</a></button>
+            <button><a style="color: yellow;" href="/Jared-Cappa.docx" download="Resume">Download CV</a></button>
         </section>
 
         <section id="Contact" class="infoText">
