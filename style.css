@@ -3,12 +3,14 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     width: 100%;
     min-height: 100vh;
     background-color: black;
-    overflow: hidden;
+    overflow-x: hidden;
 }
+
 .container {
     width: 100%;
     height: 100vh;
@@ -16,7 +18,9 @@ body {
     overflow-y: scroll;
     scroll-behavior: smooth;
     scroll-snap-type: y mandatory;
+    padding: 10px;
 }
+
 .menu {
     position: fixed;
     width: 100%;
@@ -29,31 +33,37 @@ body {
     background-color: black;
     padding: 0 30px;
 }
+
 .logo {
     color: #dedce1;
     font-size: 18px;
     text-transform: uppercase;
 }
+
 .logo span {
     padding-left: 10px;
     color: yellow;
 }
+
 .menu ul {
     list-style: none;
     display: flex;
     justify-content: center;
     width: 100%;
 }
+
 .menu ul li {
     display: inline-table;
     padding: 0 20px;
 }
+
 .menu ul li a {
     position: relative;
     text-decoration: none;
     color: #dedce1;
     font-size: 20px;
 }
+
 .menu ul li a::after {
     content: '';
     position: absolute;
@@ -66,14 +76,17 @@ body {
     transition: transform 0.4s;
     transform: scale(0);
 }
+
 .menu ul li a:hover::after,
 .menu ul li a.active::after {
     transform: scale(1);
 }
+
 #menuBtn {
     cursor: pointer;
     user-select: none;
 }
+
 #menuBtn .bar {
     width: 26px;
     height: 3px;
@@ -82,25 +95,24 @@ body {
     border-radius: 5px;
     transition: 0.4s cubic-bezier(1, 0.2, 0.2, 1);
 }
+
 main {
-    width: 100%;
-    height: calc(100vh - 70px);
-    background-image: url(/Images/leafm.jpg);
+    background-image: none;
     background-repeat: no-repeat;
-    background-position: right center;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    background-position: center;
 }
+
 .infoText {
     padding: 0 8%;
 }
+
 .infoText p {
     color: #79747b;
     font-size: 22px;
     letter-spacing: 1px;
     text-transform: uppercase;
 }
+
 .infoText h1 {
     color: #dedce1;
     font-size: 50px;
@@ -109,10 +121,12 @@ main {
     text-transform: uppercase;
     text-shadow: 2px 2px 2px #333, -2px -2px 2px #333;
 }
+
 .infoText h1 span {
     color: yellow;
     padding-left: 10px;
 }
+
 .infoText button {
     padding: 10px 12px;
     border: 1px solid #79747b;
@@ -123,45 +137,28 @@ main {
     cursor: pointer;
     transition: all 0.4s;
 }
+
 .infoText button:hover {
     color: yellow;
 }
+
 .socialMediaIcons {
     position: absolute;
     bottom: 60px;
     left: 8%;
     color: yellow;
 }
+
 .socialMediaIcons a {
     font-size: 24px;
     padding-right: 20px;
     transition: transform 0.4s;
 }
+
 .socialMediaIcons a:hover {
     transform: scale(1.2);
 }
-@media(max-width: 768px) {
-    #menuBtn {
-        display: block;
-    }
-    .menu ul {
-        position: fixed;
-        width: 250px;
-        height: calc(100vh - 70px);
-        top: 70px;
-        right: -250px;
-        background-color: #232323;
-        border-radius: 30% 0 0 80%;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        border-top: 1px solid black;
-        transition: right 0.4s cubic-bezier(1, 0.2, 0.2, 1);
-    }
-    .menu ul.active {
-        right: 0;
-    }
-}
+
 section {
     display: flex;
     flex-direction: column;
@@ -173,17 +170,19 @@ section {
     color: white;
     scroll-snap-align: center;
 }
+
 section h1 {
     font-size: 4rem;
 }
+
 section p {
     font-size: 1.5rem;
 }
+
 .gototopbtn {
     position: fixed;
     width: 50px;
     height: 50px;
-    background: black;
     bottom: 40px;
     right: 50px;
     text-decoration: none;
@@ -192,6 +191,7 @@ section p {
     color: yellow;
     font-size: 22px;
 }
+
 input[type="text"],
 select,
 textarea {
@@ -199,10 +199,10 @@ textarea {
     padding: 12px;
     border: 1px solid black;
     border-radius: 10px;
-    box-sizing: border-box;
     margin: 6px 0 16px;
     resize: vertical;
 }
+
 input[type="submit"] {
     background-color: rgb(0, 243, 0);
     color: black;
@@ -211,64 +211,173 @@ input[type="submit"] {
     border-radius: 10px;
     cursor: pointer;
 }
+
 input[type="submit"]:hover {
     background-color: yellow;
 }
 
-/* Project container */
 .projects-container {
     display: flex;
-    justify-content: space-between;
-    gap: 20px;
+    justify-content: flex-start;
     margin-top: 40px;
-    flex-wrap: wrap;  /* Ensures responsiveness on smaller screens */
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0;
+    scroll-snap-type: x mandatory;
+    width: 100%;
+    height: 55vh;
+    -webkit-overflow-scrolling: touch;
 }
 
-/* Each project box styling */
+.projects-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.projects-container::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 10px;
+}
+
+.projects-container::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.projects-container::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+.projects-container::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+
+
 .project-box {
     background-color: #232323;
     border: 1px solid #444;
     padding: 20px;
-    width: 30%;
-    height: 45%;
+    width: 83vw;
+    height: 65vh;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     text-align: center;
     color: white;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
-.project-box h2 {
-    font-size: 1.2rem;
-    color: yellow;
-    margin-bottom: 10px;
-}
-
-.project-box p {
-    font-size: 16px;
-    color: #bbb;
-    line-height: 1.3;
-}
-
-/* Hover effect for project boxes */
-.project-box:hover {
-    background-color: #1d1d1d;
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
-}
-
-/* Responsive design: Stacking project boxes on smaller screens */
 @media (max-width: 768px) {
     .projects-container {
-        flex-direction: column;
-        align-items: center;
+        width: 100vw;
+        height: 55vh;
+        margin-top: .5rem;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        padding: 0 10px;
+        scroll-snap-type: y mandatory;
+        padding: 0px;
+    }
+
+    #Services h1{
+        margin-top: -4rem;
+    }
+
+    .gototopbtn{
+        right: .3rem;
+        bottom: .3rem;
+    }
+
+    #About h1{
+        margin-top: -4rem;
     }
 
     .project-box {
-        width: 80%;
-        margin-bottom: 20px;
+        width: 100vw;
+        overflow-x: hidden;
+        height: 55vh;
+        margin-right: 20rem;
+        scroll-snap-align: start;
+    }
+
+    #menuBtn {
+        display: block;
+    }
+    .menu ul {
+        position: fixed;
+        width: 70%;
+        height: 100vh;
+        top: 70px;
+        right: -70%;
+        background-color: #232323;
+        border-radius: 30% 0 0 80%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        border-top: 1px solid black;
+        transition: right 0.4s cubic-bezier(1, 0.2, 0.2, 1);
+    }
+    .menu ul.active {
+        right: 0;
+    }
+    .logo {
+        font-size: 1rem;
+    }
+    section h1 {
+        font-size: 2.5rem;
+    }
+    section p {
+        font-size: 1.2rem;
+    }
+    .socialMediaIcons {
+        bottom: .3rem;
+        font-size: 18px;
+    }
+
+    .project-box h2 {
+        font-size: 1.5rem;
+    }
+    .project-box p {
+        font-size: 1rem;
+    }
+    .project-box a {
+        font-size: 1rem;
     }
 }
 
-/* Contact Section */
+.project-box h2 {
+    font-size: 2rem;
+    color: yellow;
+    margin-bottom: 20px;
+}
+
+.project-box p {
+    font-size: 1.2rem;
+    color: #bbb;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.project-box a {
+    color: #fff;
+    font-size: 1.2rem;
+    text-decoration: none;
+    border: 2px solid yellow;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.project-box a:hover {
+    background-color: yellow;
+    color: black;
+}
+
 #Contact {
     display: flex;
     justify-content: center;
@@ -333,19 +442,13 @@ input[type="submit"]:hover {
     background-color: rgb(0, 243, 0);
 }
 
-/* Small screens adjustments */
-@media (max-width: 768px) {
-    #Contact {
-        padding: 20px;
+@media (max-width: 480px) {
+    .infoText p, .infoText h1 {
+        font-size: 1.2rem;
+        padding: 5px;
     }
-
-    #Contact h1 {
-        font-size: 2rem;
-    }
-
-    .contact-form {
-        padding: 20px;
-        width: 100%;
-        max-width: 400px;
+    .projects-container {
+        flex-direction: column;
+        gap: 20px;
     }
 }
